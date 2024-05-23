@@ -2,7 +2,7 @@
   <div class="header-section">
     <UnexpectedCostsCard />
     <div class="image-content">
-      <img src="@/assets/images/IMG_0783 1.png" />
+      <img src="@/assets/images/Header.png" />
     </div>
   </div>
 </template>

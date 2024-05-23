@@ -10,6 +10,8 @@ export const useUserStore = defineStore('userStore', {
     // Define your actions here
   },
   getters: {
-    // Define your getters here
+    monthlyPayment: (state) => {
+      return ((state.amount / state.period) * 1.1).toFixed(2);
+    }
   }
 });
