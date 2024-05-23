@@ -1,9 +1,10 @@
 <template>
-  <router-view/>
+  <NavBar />
+  <router-view />
 </template>
 
 <script setup lang="ts">
+import NavBar from "../src/components/NavBar.vue";
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
