@@ -65,9 +65,11 @@ const store = useUserStore();
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 40px;
-    flex: 1;
     padding: 40px 108px 40px 108px;
+    gap: 40px;
+    flex-grow: 1;
+    box-sizing: border-box;
+    width: 600px;
   }
 
   &-title {
@@ -110,7 +112,7 @@ const store = useUserStore();
     background-color: #f0f0ea;
     border-radius: 20px 0px 0px 20px;
     border: 4px solid #ffffff;
-    flex: 1;
+    box-sizing: border-box;
     width: 600px;
     height: 680px;
   }
@@ -120,7 +122,6 @@ img {
   max-width: 100%;
   height: 100%;
   position: relative;
-  width: 600px;
   height: 520px;
   top: 80px;
   left: 60px;
