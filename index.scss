@@ -1,0 +1,12 @@
+@import "../src/assets/scss/variable.scss";
+
+body {
+  display: flex;
+  justify-content: center;
+  color: $text-color;
+  margin: 0px;
+}
+
+#app {
+  max-width: $maximum-view-width;
+}
