@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div class="header-section">
     <UnexpectedCostsCard />
     <div class="image-content">
       <img src="@/assets/images/IMG_0783 1.png" />
@@ -21,7 +21,7 @@ window.addEventListener("resize", () => {
 <style scoped lang="scss">
 @import "../src/assets/scss/variable.scss";
 
-.section {
+.header-section {
   display: flex;
   justify-content: space-between;
   gap: 24px;
@@ -29,6 +29,8 @@ window.addEventListener("resize", () => {
 
   @media screen and (max-width: $small-screen) {
     flex-direction: column-reverse;
+    padding: 16px 16px 40px 16px;
+    gap: 16px;
   }
 }
 
@@ -43,5 +45,9 @@ img {
   border-radius: 200px;
   max-width: 100%;
   object-fit: cover;
+
+  @media screen and (max-width: $small-screen) {
+    border-radius: 100px;
+  }
 }
 </style>

@@ -31,6 +31,12 @@ import BaseButton from "../components/BaseComponents/BaseButton.vue";
     border-radius: 200px;
     gap: 24px;
     flex: 40%;
+
+    @media screen and (max-width: $small-screen) {
+      padding: 64px 24px 64px 24px;
+      border-radius: 100px;
+      gap: 24px;
+    }
   }
 
   &-wrapper {
@@ -38,11 +44,16 @@ import BaseButton from "../components/BaseComponents/BaseButton.vue";
     flex-direction: column;
     text-align: center;
     gap: 16px;
+
+    @media screen and (max-width: $small-screen) {
+      gap: 8px;
+    }
   }
 
   &-label {
     font-family: Inter;
     font-weight: 500;
+    line-height: 24px;
   }
 
   &-title {
@@ -54,8 +65,8 @@ import BaseButton from "../components/BaseComponents/BaseButton.vue";
     margin: 0px;
 
     @media screen and (max-width: $medium-screen) {
-      font-size: 48px;
-      line-height: 40px;
+      font-size: 32px;
+      line-height: 36px;
     }
 
     &-wrapper {

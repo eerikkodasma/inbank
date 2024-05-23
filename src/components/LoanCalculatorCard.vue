@@ -7,13 +7,19 @@
         period.
       </div>
     </div>
-    <div class="calculator-divider"></div>
+    <div v-if="!isMobile" class="calculator-divider"></div>
     <LoanCalculator />
   </div>
 </template>
 
 <script setup lang="ts">
 import LoanCalculator from "../components/LoanCalculator.vue";
+import { ref } from "vue";
+
+const isMobile = ref(window.innerWidth <= 700);
+window.addEventListener("resize", () => {
+  isMobile.value = window.innerWidth <= 700;
+});
 </script>
 
 <style scoped lang="scss">
@@ -22,7 +28,7 @@ import LoanCalculator from "../components/LoanCalculator.vue";
 .calculator {
   &-container {
     display: flex;
-    background-color: #e6d4f1;
+    background-color: #e3d2ff;
     padding: 80px 40px 80px 40px;
     gap: 40px;
 
@@ -46,8 +52,8 @@ import LoanCalculator from "../components/LoanCalculator.vue";
     gap: 16px;
 
     @media screen and (max-width: $small-screen) {
-      padding: 0px;
       gap: 8px;
+      text-align: left;
     }
   }
 
@@ -65,7 +71,9 @@ import LoanCalculator from "../components/LoanCalculator.vue";
   }
 
   &-text {
+    font-family: Inter;
     opacity: 90%;
+    line-height: 24px;
   }
 }
 </style>

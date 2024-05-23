@@ -102,6 +102,11 @@ const monthlyPayment = computed(() => {
     display: flex;
     justify-content: space-between;
     gap: 24px;
+
+    @media screen and (max-width: $small-screen) {
+      flex-direction: column-reverse;
+      gap: 8px;
+    }
   }
 
   &-container {
@@ -110,11 +115,17 @@ const monthlyPayment = computed(() => {
 
   &-input {
     width: 100px;
+
+    @media screen and (max-width: $small-screen) {
+      width: 100%;
+    }
   }
 
   &-ranges {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
+    opacity: 60%;
   }
 }
 
@@ -137,11 +148,23 @@ const monthlyPayment = computed(() => {
     }
   }
 
+  &-title {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
   &-amount {
     font-family: Inter;
     font-size: 68px;
     font-weight: 400;
     line-height: 72px;
+
+    @media screen and (max-width: $medium-screen) {
+      font-size: 32px;
+      line-height: 36px;
+    }
   }
 
   &-text {
