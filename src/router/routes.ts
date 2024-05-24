@@ -13,12 +13,12 @@ const router = createRouter({
     },
     {
       path: "/approved",
-      name: "Approved",
+      name: "approved",
       component: LoanApprovedView,
     },
     {
       path: "/denied",
-      name: "Denied",
+      name: "denied",
       component: LoanDeniedView,
     },
   ],

@@ -30,7 +30,7 @@
           </tr>
         </table>
       </div>
-      <BaseButton class="summary-button">Back to home page</BaseButton>
+      <BaseButton class="summary-button" @click="() => $router.push({ path: '/' })">Back to home page</BaseButton>
     </div>
   </div>
   <div v-else class="mobile-layout">
