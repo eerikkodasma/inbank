@@ -8,14 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, ref } from "vue";
 import UnexpectedCostsCard from "../components/UnexpectedCostsCard.vue";
-
-const isMobile = ref(window.innerWidth <= 768);
-
-window.addEventListener("resize", () => {
-  isMobile.value = window.innerWidth <= 768;
-});
 </script>
 
 <style scoped lang="scss">

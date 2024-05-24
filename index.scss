@@ -11,4 +11,6 @@ body {
 #app {
   width: 100%;
   max-width: $maximum-view-width;
+  display: flex;
+  flex-direction: column;
 }
