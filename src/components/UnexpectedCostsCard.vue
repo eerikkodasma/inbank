@@ -10,12 +10,21 @@
         process with an instant credit decision.
       </div>
     </div>
-    <BaseButton :isPrimary="false">Apply now</BaseButton>
+    <BaseButton :isPrimary="false" @click="scrollToElement"
+      >Apply now</BaseButton
+    >
   </div>
 </template>
 
 <script setup lang="ts">
 import BaseButton from "../components/BaseComponents/BaseButton.vue";
+
+function scrollToElement() {
+  const element = document.getElementById("calculator");
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+}
 </script>
 
 <style scoped lang="scss">
