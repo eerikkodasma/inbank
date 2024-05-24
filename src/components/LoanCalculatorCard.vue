@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import LoanCalculator from "../components/LoanCalculator.vue";
+import LoanCalculator from "@/components/LoanCalculator.vue";
 import { ref } from "vue";
 
 const isMobile = ref(window.innerWidth <= 700);
@@ -23,7 +23,7 @@ window.addEventListener("resize", () => {
 </script>
 
 <style scoped lang="scss">
-@import "../src/assets/scss/variable.scss";
+@import "@/assets/scss/variable.scss";
 
 .calculator {
   &-container {

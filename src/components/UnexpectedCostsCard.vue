@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from "../components/BaseComponents/BaseButton.vue";
+import BaseButton from "@/components/BaseComponents/BaseButton.vue";
 
 function scrollToElement() {
   const element = document.getElementById("calculator");
@@ -28,7 +28,7 @@ function scrollToElement() {
 </script>
 
 <style scoped lang="scss">
-@import "../src/assets/scss/variable.scss";
+@import "@/assets/scss/variable.scss";
 
 .header {
   &-container {

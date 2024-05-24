@@ -60,8 +60,8 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { useUserStore } from "../stores/userStore";
-import BaseButton from "../components/BaseComponents/BaseButton.vue";
+import { useUserStore } from "@/stores/userStore";
+import BaseButton from "@/components/BaseComponents/BaseButton.vue";
 
 const store = useUserStore();
 const amount = computed({
@@ -80,7 +80,7 @@ const monthlyPayment = computed(() => {
 </script>
 
 <style scoped lang="scss">
-@import "../src/assets/scss/variable.scss";
+@import "@/assets/scss/variable.scss";
 
 .calculator {
   display: flex;

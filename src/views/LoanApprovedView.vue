@@ -75,9 +75,9 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from "../components/BaseComponents/BaseButton.vue";
+import BaseButton from "@/components/BaseComponents/BaseButton.vue";
 import { ref } from "vue";
-import { useUserStore } from "../stores/userStore";
+import { useUserStore } from "@/stores/userStore";
 const store = useUserStore();
 
 const isMobile = ref(window.innerWidth <= 700);
@@ -88,7 +88,7 @@ window.addEventListener("resize", () => {
 </script>
 
 <style scoped lang="scss">
-@import "../src/assets/scss/variable.scss";
+@import "@/assets/scss/variable.scss";
 
 .loan {
   &-approved-view {

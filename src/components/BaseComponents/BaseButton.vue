@@ -44,7 +44,7 @@ const emits = defineEmits(["onClick"]);
 </script>
 
 <style scoped lang="scss">
-@import "../src/assets/scss/variable.scss";
+@import "@/assets/scss/variable.scss";
 
 .btn {
   font-family: Inter;

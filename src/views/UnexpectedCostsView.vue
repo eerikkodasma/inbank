@@ -8,11 +8,11 @@
 </template>
 
 <script setup lang="ts">
-import UnexpectedCostsCard from "../components/UnexpectedCostsCard.vue";
+import UnexpectedCostsCard from "@/components/UnexpectedCostsCard.vue";
 </script>
 
 <style scoped lang="scss">
-@import "../src/assets/scss/variable.scss";
+@import "@/assets/scss/variable.scss";
 
 .header-section {
   display: flex;
