@@ -47,14 +47,13 @@ const emits = defineEmits(["onClick"]);
 @import "../src/assets/scss/variable.scss";
 
 .btn {
+  font-family: Inter;
+  cursor: pointer;
+  border: none;
   padding: 12px 24px 12px 24px;
   border-radius: 100px;
-  font-family: Inter;
-  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  border: none;
-  cursor: pointer;
 }
 
 .btn--primary {

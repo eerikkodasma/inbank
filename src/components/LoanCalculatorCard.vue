@@ -7,7 +7,7 @@
         period.
       </div>
     </div>
-    <div v-if="!isMobile" class="calculator-divider"></div>
+    <div v-if="!isMobile" class="divider"></div>
     <LoanCalculator />
   </div>
 </template>
@@ -38,11 +38,6 @@ window.addEventListener("resize", () => {
     }
   }
 
-  &-divider {
-    /* Last 2 digit is opacity */
-    border: 1px solid #21093a15;
-  }
-
   &-heading {
     display: flex;
     flex-direction: column;
@@ -60,7 +55,6 @@ window.addEventListener("resize", () => {
   &-title {
     font-family: Bitter;
     font-size: 68px;
-    font-weight: 400;
     line-height: 72px;
     margin: 0px;
 

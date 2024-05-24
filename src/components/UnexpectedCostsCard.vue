@@ -60,7 +60,6 @@ import BaseButton from "../components/BaseComponents/BaseButton.vue";
     font-family: Bitter;
     font-style: italic;
     font-size: 68px;
-    font-weight: 400;
     line-height: 72px;
     margin: 0px;
 
@@ -79,7 +78,6 @@ import BaseButton from "../components/BaseComponents/BaseButton.vue";
   &-text {
     font-family: Inter;
     font-size: 16px;
-    font-weight: 400;
     line-height: 24px;
     opacity: 90%;
   }

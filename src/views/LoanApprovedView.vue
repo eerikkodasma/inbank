@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isMobile" class="loan-view">
+  <div v-if="!isMobile" class="loan-approved-view">
     <div class="image-wrapper">
       <img src="@/assets/images/SmallLoan.png" />
     </div>
@@ -34,7 +34,7 @@
     </div>
   </div>
   <div v-else class="mobile-layout">
-    <div class="loan-view">
+    <div class="loan-approved-view">
       <div class="heading-wrapper">
         <div class="image-wrapper">
           <img src="@/assets/images/SmallLoan.png" />
@@ -91,7 +91,7 @@ window.addEventListener("resize", () => {
 @import "../src/assets/scss/variable.scss";
 
 .loan {
-  &-view {
+  &-approved-view {
     display: flex;
     background-color: #ffffff;
     margin: 16px 40px 0px 40px;
@@ -130,7 +130,6 @@ window.addEventListener("resize", () => {
     font-family: Bitter;
     font-style: italic;
     font-size: 48px;
-    font-weight: 400;
     line-height: 56px;
 
     @media screen and (max-width: $small-screen) {
@@ -148,7 +147,6 @@ window.addEventListener("resize", () => {
   &-text {
     font-family: Inter;
     font-size: 16px;
-    font-weight: 400;
     line-height: 24px;
   }
 
@@ -224,9 +222,8 @@ table {
   }
 }
 
-.mobile {
-  &-layout {
-    background-color: #ffffff;
-  }
+.mobile-layout {
+  background-color: #ffffff;
+  height: 100%;
 }
 </style>

@@ -151,14 +151,12 @@ const monthlyPayment = computed(() => {
   &-title {
     font-family: Inter;
     font-size: 16px;
-    font-weight: 400;
     line-height: 24px;
   }
 
   &-amount {
     font-family: Inter;
     font-size: 68px;
-    font-weight: 400;
     line-height: 72px;
 
     @media screen and (max-width: $medium-screen) {
@@ -171,7 +169,6 @@ const monthlyPayment = computed(() => {
     font-family: Inter;
     text-align: left;
     font-size: 12px;
-    font-weight: 400;
     line-height: 16px;
     opacity: 60%;
   }

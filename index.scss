@@ -1,11 +1,16 @@
 @import "../src/assets/scss/variable.scss";
 
+html {
+  height: 100%;
+}
+
 body {
   display: flex;
   justify-content: center;
   color: $text-color;
-  margin: 0px;
   background-color: $web-background-color;
+  height: 100%;
+  margin: 0px;
 }
 
 #app {
@@ -13,4 +18,10 @@ body {
   max-width: $maximum-view-width;
   display: flex;
   flex-direction: column;
+}
+
+// General divider
+.divider {
+  /* Last 2 digit is opacity */
+  border: 1px solid #21093a15;
 }
