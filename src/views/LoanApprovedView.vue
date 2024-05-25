@@ -13,13 +13,17 @@
           <tr>
             <td>
               <div class="summary-table-data">Loan amount</div>
-              <div class="summary-table-data">{{ store.amount }} €</div>
+              <div class="summary-table-data">
+                {{ store.calculator.amount }} €
+              </div>
             </td>
           </tr>
           <tr>
             <td>
               <div class="summary-table-data">Loan period</div>
-              <div class="summary-table-data">{{ store.period }} months</div>
+              <div class="summary-table-data">
+                {{ store.calculator.period }} months
+              </div>
             </td>
           </tr>
           <tr>
@@ -30,7 +34,11 @@
           </tr>
         </table>
       </div>
-      <BaseButton class="summary-button" @click="() => $router.push({ path: '/' })">Back to home page</BaseButton>
+      <BaseButton
+        class="summary-button"
+        @click="() => $router.push({ path: '/' })"
+        >Back to home page</BaseButton
+      >
     </div>
   </div>
   <div v-else class="mobile-layout">
@@ -48,13 +56,17 @@
         <tr>
           <td>
             <div class="summary-table-data">Loan amount</div>
-            <div class="summary-table-data">{{ store.amount }} €</div>
+            <div class="summary-table-data">
+              {{ store.calculator.amount }} €
+            </div>
           </td>
         </tr>
         <tr>
           <td>
             <div class="summary-table-data">Loan period</div>
-            <div class="summary-table-data">{{ store.period }} months</div>
+            <div class="summary-table-data">
+              {{ store.calculator.period }} months
+            </div>
           </td>
         </tr>
         <tr>

@@ -2,38 +2,30 @@
   <div id="calculator" class="calculator">
     <div class="slider-wrapper">
       <div class="slider-row">
-        <div class="slider-container">
+        <BaseSlider
+          v-model="store.calculator.amount"
+          :min="300"
+          :max="7200"
+          min-label="300€"
+          max-label="7200€"
+          @update:model-value="(value) => (store.calculator.amount = value)"
+        />
           <input
-            id="amount"
-            class="slider"
-            type="range"
-            v-model="amount"
-            min="300"
-            max="7200"
-          />
-          <div class="slider-ranges">
-            <span>300€</span>
-            <span>7200€</span>
-          </div>
-        </div>
-        <input class="slider-input" type="number" v-model="amount" />
+          class="slider-input"
+          type="number"
+          v-model="store.calculator.amount"
+        />
       </div>
       <div class="slider-row">
-        <div class="slider-container">
-          <input
-            v-model="period"
-            id="period"
-            class="slider"
-            type="range"
-            min="2"
-            max="72"
-          />
-          <div class="slider-ranges">
-            <span>2 months</span>
-            <span>72 months</span>
-          </div>
-        </div>
-        <select v-model="period" class="slider-input">
+        <BaseSlider
+          v-model="store.calculator.period"
+          :min="2"
+          :max="72"
+          min-label="2 months"
+          max-label="72 months"
+          @update:model-value="(value) => (store.calculator.period = value)"
+        />
+        <select v-model="store.calculator.period" class="slider-input">
           <option v-for="month in months" :key="month" :value="month">
             {{ month }} months
           </option>
@@ -45,9 +37,11 @@
       <div class="payment-calculation">
         <div class="payment-calculation-wrapper">
           <div class="payment-title">Monthly payment</div>
-          <div class="payment-amount">{{ monthlyPayment }}€</div>
+          <div class="payment-amount">{{ store.monthlyPayment }}€</div>
         </div>
-        <BaseButton>Apply now</BaseButton>
+        <BaseButton @click="() => (isModalOpen = !isModalOpen)"
+          >Apply now</BaseButton
+        >
       </div>
       <div class="payment-text">
         The calculation is approximate and may differ from the conditions
@@ -62,21 +56,10 @@
 import { computed, ref } from "vue";
 import { useUserStore } from "@/stores/userStore";
 import BaseButton from "@/components/BaseComponents/BaseButton.vue";
+import BaseSlider from "@/components/BaseComponents/BaseSlider.vue";
 
 const store = useUserStore();
-const amount = computed({
-  get: () => store.amount,
-  set: (value) => store.setAmount(value),
-});
-const period = computed({
-  get: () => store.period,
-  set: (value) => store.setPeriod(value),
-});
-const months = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 72]);
-
-const monthlyPayment = computed(() => {
-  return ((amount.value / period.value) * 1.1).toFixed(2);
-});
+const months = ref(Array.from({ length: 99 }, (_, i) => 2 + i));
 </script>
 
 <style scoped lang="scss">
