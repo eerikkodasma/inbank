@@ -4,7 +4,7 @@
     <div class="page-not-found-label">Oops we couldn't find that page.</div>
     <BaseButton
       class="page-not-found-button"
-      @click="() => $router.push({ path: '/' })"
+      @click="() => $router.push({ name: ROUTE_PATHS.HOME })"
       >Back to home</BaseButton
     >
   </div>
@@ -12,6 +12,7 @@
 
 <script setup lang="ts">
 import BaseButton from "@/components/BaseComponents/BaseButton.vue";
+import { ROUTE_PATHS } from "@/router/paths";
 </script>
 
 <style scoped lang="scss">
