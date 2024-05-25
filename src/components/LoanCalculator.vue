@@ -10,7 +10,7 @@
           max-label="7200€"
           @update:model-value="(value) => (store.calculator.amount = value)"
         />
-          <input
+        <input
           class="slider-input"
           type="number"
           v-model="store.calculator.amount"
@@ -49,6 +49,10 @@
         offer. Financial services are provided by AS Inbank Finance.
       </div>
     </div>
+    <LoanPersonalDetailsModal
+      v-if="isModalOpen"
+      @close="isModalOpen = !isModalOpen"
+    />
   </div>
 </template>
 
@@ -57,8 +61,11 @@ import { computed, ref } from "vue";
 import { useUserStore } from "@/stores/userStore";
 import BaseButton from "@/components/BaseComponents/BaseButton.vue";
 import BaseSlider from "@/components/BaseComponents/BaseSlider.vue";
+import LoanPersonalDetailsModal from "@/components/LoanPersonalDetailsModal.vue";
 
 const store = useUserStore();
+
+const isModalOpen = ref(false);
 const months = ref(Array.from({ length: 99 }, (_, i) => 2 + i));
 </script>
 
