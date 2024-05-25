@@ -70,7 +70,6 @@ defineEmits(["update:modelValue"]);
     #ddd calc(v-bind(trackPercentage) * 1%),
     #ddd 100%
   );
-  left: -12px;
 
   &::-webkit-slider-thumb {
     appearance: none;

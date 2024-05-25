@@ -36,7 +36,9 @@
       </div>
       <BaseButton
         class="summary-button"
-        @click="() => $router.push({ path: '/' })"
+        @click="
+          () => ($router.push({ name: ROUTE_PATHS.HOME }), store.clearState())
+        "
         >Back to home page</BaseButton
       >
     </div>
@@ -79,7 +81,9 @@
       <BaseButton
         v-if="isMobile"
         class="summary-button"
-        @click="() => $router.push({ path: '/' })"
+        @click="
+          () => ($router.push({ name: ROUTE_PATHS.HOME }), store.clearState())
+        "
         >Back to home page</BaseButton
       >
     </div>
@@ -88,6 +92,7 @@
 
 <script setup lang="ts">
 import BaseButton from "@/components/BaseComponents/BaseButton.vue";
+import { ROUTE_PATHS } from "@/router/paths";
 import { ref } from "vue";
 import { useUserStore } from "@/stores/userStore";
 const store = useUserStore();

@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
-import type { userCalculatorState } from "@/models/calculator.model";
-import type { userDetailState } from "@/models/user.model";
+import { defaultCalculatorState } from "@/models/calculator.model";
+import { defaultUserDetailsState } from "@/models/user.model";
+import type userCalculatorState from "@/models/calculator.model";
+import type userDetailState from "@/models/user.model";
 
 interface UserState {
   calculator: userCalculatorState;
@@ -10,20 +12,15 @@ interface UserState {
 export const useUserStore = defineStore("userStore", {
   state: (): UserState => ({
     // Define your state properties here
-    calculator: {
-      amount: 700,
-      period: 2,
-    },
-    userDetails: {
-      firstName: "",
-      lastName: "",
-      mobileNumber: "",
-      email: "",
-      monthlyIncome: 0,
-    },
+    calculator: { ...defaultCalculatorState },
+    userDetails: { ...defaultUserDetailsState },
   }),
   actions: {
     // Define your actions here
+    clearState() {
+      this.calculator = defaultCalculatorState;
+      this.userDetails = defaultUserDetailsState;
+    },
   },
   getters: {
     monthlyPayment: (state) => {

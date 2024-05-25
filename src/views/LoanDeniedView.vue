@@ -1,7 +1,9 @@
 <template>
   <div class="loan-denied-view">
     <div class="response-title-wrapper">
-      <div class="response-title">Dear {{ name }}</div>
+      <div class="response-title">
+        Dear {{ store.userDetails.firstName }} {{ store.userDetails.lastName }}
+      </div>
       <div class="response-label">Unfortunately, your loan was denied.</div>
     </div>
     <div class="response-text-wrapper">
@@ -12,12 +14,21 @@
       </div>
       <div class="divider"></div>
     </div>
-    <BaseButton @click="() => $router.push({ path: '/' })">Exit</BaseButton>
+    <BaseButton
+      @click="
+        () => ($router.push({ name: ROUTE_PATHS.HOME }), store.clearState())
+      "
+      >Exit</BaseButton
+    >
   </div>
 </template>
 
 <script setup lang="ts">
 import BaseButton from "@/components/BaseComponents/BaseButton.vue";
+import { ROUTE_PATHS } from "@/router/paths";
+import { useUserStore } from "@/stores/userStore";
+
+const store = useUserStore();
 </script>
 
 <style scoped lang="scss">

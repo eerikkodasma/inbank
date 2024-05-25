@@ -5,3 +5,11 @@ export default interface userDetailState {
   email: string;
   monthlyIncome: number;
 }
+
+export const defaultUserDetailsState: userDetailState = {
+  firstName: "",
+  lastName: "",
+  mobileNumber: "",
+  email: "",
+  monthlyIncome: 0,
+};
