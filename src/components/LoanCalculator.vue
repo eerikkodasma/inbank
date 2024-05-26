@@ -4,32 +4,53 @@
       <div class="slider-row">
         <BaseSlider
           v-model="store.calculator.amount"
-          :min="300"
-          :max="7200"
-          min-label="300€"
-          max-label="7200€"
+          :min="minAmount"
+          :max="maxAmount"
+          :min-label="`${minAmount} €`"
+          :max-label="`${maxAmount} €`"
           @update:model-value="(value) => (store.calculator.amount = value)"
         />
-        <input
-          class="slider-input"
-          type="number"
+        <BaseInput
           v-model="store.calculator.amount"
+          id="amount"
+          name="amount"
+          label="Amount"
+          placeholder="Amount"
+          type="number"
+          class="slider-input"
+          required
+          :min="minAmount"
+          :max="maxAmount"
+          :errors="errors['amount']"
+          @update:model-value="() => (errors = {})"
         />
       </div>
       <div class="slider-row">
         <BaseSlider
           v-model="store.calculator.period"
-          :min="2"
-          :max="72"
-          min-label="2 months"
-          max-label="72 months"
+          :min="minPeriod"
+          :max="maxPeriod"
+          :min-label="`${minPeriod} months`"
+          :max-label="`${maxPeriod} months`"
           @update:model-value="(value) => (store.calculator.period = value)"
         />
-        <select v-model="store.calculator.period" class="slider-input">
-          <option v-for="month in months" :key="month" :value="month">
-            {{ month }} months
-          </option>
-        </select>
+        <BaseSelect
+          :model-value="store.calculator.period"
+          :options="periodOptions"
+          id="period"
+          name="period"
+          label="Period"
+          placeholder="Period"
+          type="number"
+          class="slider-input"
+          required
+          :errors="errors['period']"
+          @update:model-value="
+            (value) => (
+              (store.calculator.period = Number(value)), (errors = {})
+            )
+          "
+        />
       </div>
     </div>
 
@@ -39,9 +60,7 @@
           <div class="payment-title">Monthly payment</div>
           <div class="payment-amount">{{ store.monthlyPayment }}€</div>
         </div>
-        <BaseButton @click="() => (isModalOpen = !isModalOpen)"
-          >Apply now</BaseButton
-        >
+        <BaseButton @click="handleInput()">Apply now</BaseButton>
       </div>
       <div class="payment-text">
         The calculation is approximate and may differ from the conditions
@@ -57,16 +76,53 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import { useUserStore } from "@/stores/userStore";
+import LoanPersonalDetailsModal from "@/components/LoanPersonalDetailsModal.vue";
 import BaseButton from "@/components/BaseComponents/BaseButton.vue";
 import BaseSlider from "@/components/BaseComponents/BaseSlider.vue";
-import LoanPersonalDetailsModal from "@/components/LoanPersonalDetailsModal.vue";
+import BaseSelect from "@/components/BaseComponents/BaseSelect.vue";
+import BaseInput from "@/components/BaseComponents/BaseInput.vue";
+import { computed, ref } from "vue";
+import { useUserStore } from "@/stores/userStore";
+import { Option } from "@/models/general.model";
+import { ErrorsState } from "@/models/general.model";
 
 const store = useUserStore();
 
+const minAmount = 300;
+const maxAmount = 7200;
+const minPeriod = 2;
+const maxPeriod = 72;
+
 const isModalOpen = ref(false);
-const months = ref(Array.from({ length: 99 }, (_, i) => 2 + i));
+const months = ref(
+  Array.from({ length: maxPeriod - minPeriod + 1 }, (_, i) => minPeriod + i)
+);
+const errors = ref<ErrorsState>({});
+
+const periodOptions = computed<Option[]>(() => {
+  return months.value.map((option) => ({ key: option, value: option }));
+});
+
+function handleInput() {
+  if (
+    store.calculator.amount < minAmount ||
+    maxAmount < store.calculator.amount
+  ) {
+    errors.value["amount"] = ["Amount is out of range"];
+  }
+
+  if (
+    store.calculator.period < minPeriod ||
+    maxPeriod < store.calculator.period
+  ) {
+    errors.value["period"] = ["Period is out of range"];
+  }
+
+  if (Object.keys(errors.value).length === 0) {
+    // Proceed the flow if no errors
+    isModalOpen.value = !isModalOpen.value;
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -91,6 +147,7 @@ const months = ref(Array.from({ length: 99 }, (_, i) => 2 + i));
   &-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 24px;
 
     @media screen and (max-width: $small-screen) {
@@ -100,11 +157,12 @@ const months = ref(Array.from({ length: 99 }, (_, i) => 2 + i));
   }
 
   &-container {
+    flex: 1;
     width: 100%;
   }
 
   &-input {
-    width: 100px;
+    width: 160px;
 
     @media screen and (max-width: $small-screen) {
       width: 100%;

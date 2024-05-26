@@ -67,13 +67,13 @@ defineEmits(["update:modelValue"]);
     to right,
     $text-color 0%,
     $text-color calc(v-bind(trackPercentage) * 1%),
-    #ddd calc(v-bind(trackPercentage) * 1%),
-    #ddd 100%
+    #21093a10 calc(v-bind(trackPercentage) * 1%),
+    #21093a10 100%
   );
 
   &::-webkit-slider-thumb {
     appearance: none;
-    background: url("@/assets/images/image.png");
+    background: url("@/assets/images/Slider.png");
     background-size: contain;
     cursor: pointer;
     width: 52px;
@@ -82,7 +82,7 @@ defineEmits(["update:modelValue"]);
 
   &::-moz-range-thumb {
     appearance: none;
-    background: url("@/assets/images/image.png");
+    background: url("@/assets/images/Slider.png");
     background-size: contain;
     cursor: pointer;
     width: 52px;
