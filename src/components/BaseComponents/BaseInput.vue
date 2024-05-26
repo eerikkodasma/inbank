@@ -6,44 +6,38 @@
       :type="type"
       :name="name"
       :placeholder="placeholder"
-      :required="props.required"
-      :disabled="props.disabled"
+      :required="required"
+      :disabled="disabled"
       :class="[
         'input',
         isModalValueEmpty && 'input-empty',
-        props.errors?.length
-          ? 'input-warning'
-          : props.disabled && 'input-disabled',
+        errors?.length ? 'input-warning' : disabled && 'input-disabled',
       ]"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="handleInput($event.target.value)"
     />
     <label
-      v-if="props.label"
+      v-if="label"
       :class="[
         'input-label',
-        (!isModalValueEmpty || props.placeholder) && 'input-label-above',
-        props.errors?.length
+        (!isModalValueEmpty || placeholder) && 'input-label-above',
+        errors?.length
           ? 'input-label-error'
-          : props.disabled && 'input-label-disabled',
+          : disabled && 'input-label-disabled',
       ]"
       :for="id"
       >{{ label }}</label
     >
     <div
-      v-if="props.supportingText"
+      v-if="supportingText"
       :class="[
         'input-supporting-text',
-        props.errors?.length && 'input-supporting-text-error',
+        errors?.length && 'input-supporting-text-error',
       ]"
     >
-      {{ props.supportingText }}
+      {{ supportingText }}
     </div>
-    <div v-if="props.errors?.length">
-      <div
-        v-for="(error, index) in props.errors"
-        :key="index"
-        class="input-error"
-      >
+    <div v-if="errors?.length">
+      <div v-for="(error, index) in errors" :key="index" class="input-error">
         {{ error }}
       </div>
     </div>
@@ -62,7 +56,7 @@ const props = defineProps({
   },
   id: {
     type: String,
-    default: undefined,
+    required: true,
   },
   name: {
     type: String,
@@ -107,7 +101,14 @@ const isModalValueEmpty = computed(() => {
   );
 });
 
-defineEmits(["update:modelValue"]);
+function handleInput(value: string | number) {
+  if (props.type === "number") {
+    value = Number(value);
+  }
+  emit("update:modelValue", value);
+}
+
+const emit = defineEmits(["update:modelValue"]);
 </script>
 
 <style scoped lang="scss">
@@ -117,7 +118,7 @@ defineEmits(["update:modelValue"]);
   padding: 4px 16px;
   border-radius: 8px;
   border: 1px solid $input-color;
-  height: 24px;
+  height: 36px;
   color: $text-color;
   outline: none;
 

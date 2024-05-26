@@ -18,16 +18,15 @@ export const useUserStore = defineStore("userStore", {
   actions: {
     // Define your actions here
     clearState() {
-      this.calculator = defaultCalculatorState;
-      this.userDetails = defaultUserDetailsState;
+      this.calculator = { ...defaultCalculatorState };
+      this.userDetails = { ...defaultUserDetailsState };
     },
   },
   getters: {
     monthlyPayment: (state) => {
-      return (
-        (state.calculator.amount / state.calculator.period) *
-        1.1
-      ).toFixed(2);
+      return Number(
+        ((state.calculator.amount / state.calculator.period) * 1.1).toFixed(2)
+      );
     },
   },
 });

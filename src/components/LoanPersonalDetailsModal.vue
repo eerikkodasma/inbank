@@ -8,6 +8,7 @@
       <form id="userDetailsForm" class="form" @submit.prevent="submitForm">
         <BaseInput
           v-model="store.userDetails.firstName"
+          id="firstName"
           name="firstName"
           label="First name"
           placeholder="First name"
@@ -16,6 +17,7 @@
         />
         <BaseInput
           v-model="store.userDetails.lastName"
+          id="lastName"
           name="lastName"
           label="Last name"
           placeholder="Last name"
@@ -24,6 +26,7 @@
         />
         <BaseInput
           v-model="store.userDetails.mobileNumber"
+          id="mobileNumber"
           name="mobileNumber"
           label="Mobile number"
           placeholder="Mobile number"
@@ -33,6 +36,7 @@
         />
         <BaseInput
           v-model="store.userDetails.email"
+          id="email"
           name="email"
           label="Email"
           placeholder="Email"
@@ -42,6 +46,7 @@
         />
         <BaseInput
           v-model="store.userDetails.monthlyIncome"
+          id="monthlyIncome"
           name="monthlyIncome"
           label="Monthly income"
           placeholder="Monthly income"
@@ -63,7 +68,8 @@
 <script setup lang="ts">
 import BaseButton from "@/components/BaseComponents/BaseButton.vue";
 import BaseInput from "@/components/BaseComponents/BaseInput.vue";
-import type userDetailState from "@/models/user.model";
+import userDetailState from "@/models/user.model";
+import { ErrorsState } from "@/models/general.model";
 import { ROUTE_PATHS } from "@/router/paths";
 import { useUserStore } from "@/stores/userStore";
 import { ref } from "vue";
@@ -71,17 +77,12 @@ import { useRouter } from "vue-router";
 const store = useUserStore();
 const emits = defineEmits(["close"]);
 const router = useRouter();
-const errors = ref<errorsState>({});
-
-interface errorsState {
-  [x: string]: string[];
-}
+const errors = ref<ErrorsState>({});
 
 const submitForm = () => {
   // Reset errors before checking
   errors.value = {};
   const result: Boolean = validateForm(store.userDetails);
-  // console.log(result);
   if (result) {
     emits("close");
     if (store.userDetails.monthlyIncome > 1000) {

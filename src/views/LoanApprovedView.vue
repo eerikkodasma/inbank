@@ -43,50 +43,46 @@
       >
     </div>
   </div>
-  <div v-else class="mobile-layout">
-    <div class="loan-approved-view">
-      <div class="heading-wrapper">
-        <div class="image-wrapper">
-          <img src="@/assets/images/SmallLoan.png" />
-        </div>
-        <div class="summary-title-wrapper">
-          <div class="summary-title">Good news!</div>
-          <div class="summary-text">Your loan has been approved.</div>
-        </div>
+  <div v-else class="loan-approved-view">
+    <div class="heading-wrapper">
+      <div class="image-wrapper">
+        <img src="@/assets/images/SmallLoan.png" />
       </div>
-      <table class="summary-table">
-        <tr>
-          <td>
-            <div class="summary-table-data">Loan amount</div>
-            <div class="summary-table-data">
-              {{ store.calculator.amount }} €
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="summary-table-data">Loan period</div>
-            <div class="summary-table-data">
-              {{ store.calculator.period }} months
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="summary-table-data">Monthly payment</div>
-            <div class="summary-table-data">{{ store.monthlyPayment }} €</div>
-          </td>
-        </tr>
-      </table>
-      <BaseButton
-        v-if="isMobile"
-        class="summary-button"
-        @click="
-          () => ($router.push({ name: ROUTE_PATHS.HOME }), store.clearState())
-        "
-        >Back to home page</BaseButton
-      >
+      <div class="summary-title-wrapper">
+        <div class="summary-title">Good news!</div>
+        <div class="summary-text">Your loan has been approved.</div>
+      </div>
     </div>
+    <table class="summary-table">
+      <tr>
+        <td>
+          <div class="summary-table-data">Loan amount</div>
+          <div class="summary-table-data">{{ store.calculator.amount }} €</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="summary-table-data">Loan period</div>
+          <div class="summary-table-data">
+            {{ store.calculator.period }} months
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="summary-table-data">Monthly payment</div>
+          <div class="summary-table-data">{{ store.monthlyPayment }} €</div>
+        </td>
+      </tr>
+    </table>
+    <BaseButton
+      v-if="isMobile"
+      class="summary-button"
+      @click="
+        () => ($router.push({ name: ROUTE_PATHS.HOME }), store.clearState())
+      "
+      >Back to home page</BaseButton
+    >
   </div>
 </template>
 
@@ -116,9 +112,10 @@ window.addEventListener("resize", () => {
 
     @media screen and (max-width: $small-screen) {
       flex-direction: column;
-      background-color: transparent;
-      margin: 40px 16px 40px 16px;
+      padding: 40px 16px;
+      margin: 0;
       border-radius: 0px;
+      height: 100%;
       gap: 40px;
     }
   }
@@ -237,10 +234,5 @@ table {
     text-align: center;
     gap: 24px;
   }
-}
-
-.mobile-layout {
-  background-color: #ffffff;
-  height: 100%;
 }
 </style>
